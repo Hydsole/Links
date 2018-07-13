@@ -1,0 +1,25 @@
+package javas;
+import java.io.IOException;
+import java.net.URL;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+    public class links {
+		public static void main(String[] args) throws IOException {
+	    Scanner s;
+	    String[] st = new String[500];
+	    int i=0;
+	    s = new Scanner (System.in);
+		Document doc = Jsoup.connect("http://" + s.nextLine()).get();
+		Elements links = doc.select("a[href]");
+		
+		for (Element link : links){
+			st[i] = link.attr("href"); i++;
+			System.out.println(st[i-1]);
+		}
+	 }
+}
